@@ -6,8 +6,6 @@ const logoutButton = document.getElementById('logout');
 const itemForm = document.querySelector('#item-form');
 const addItemButton = document.querySelector('#add-button');
 const deleteAllButton = document.querySelector('#delete-button');
-const qtyInputEl = document.querySelector('#qty');
-const itemInputEl = document.querySelector('#item-name');
 const listContainerEl = document.querySelector('#list-container');
 
 window.addEventListener('load', async() => {
@@ -54,11 +52,11 @@ function renderItem(item) {
     p.textContent = `${item.qty} ${item.item}`;
     div.append(p);
 
-    if (item.purchased) {
-        div.classList.add('purchased');
-    } else {
-        div.classList.remove('purchased');
+    if (!item.purchased) {
         div.classList.add('not-purchased');
+    } else {
+        div.classList.remove('not-purchased');
+        div.classList.add('purchased');
     }
 
     return div;
