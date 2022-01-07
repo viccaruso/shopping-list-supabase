@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
-    <title>Document</title>
+    <title>Your Shopping List</title>
 </head>
 
 <body>
@@ -20,13 +20,27 @@
         </div>
     </header>    
     <button id="logout">Logout</button>
+    
     <main>
-        <h1>You are logged in!</h1>
+        <h1>Shopping List</h1>
+        <form id='item-form'>
+            <label>
+                Qty.
+                <input type='number'id='qty'name='qty' min='0' max='99'/>
+            </label>
+            <label>
+                Item:
+                <input type='text' id='item-name' name='item-name' />
+            </label>
+            <button id='add-button'>Add</button>
+        </form>
+        <button id='delete-button'>Delete All Items</button>
+        <div id='list-container'></div>
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
     </footer>
-    <script type="module" src="./other-page.js"></script>
+    <script type="module" src="./shopping-list.js"></script>
 </body>
 
 </html>

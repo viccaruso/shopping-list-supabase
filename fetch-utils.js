@@ -1,12 +1,53 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://iddyxpegdpnmmnebvghi.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTUwOTAyMSwiZXhwIjoxOTU1MDg1MDIxfQ.v4B-VNkc9Xc9bIM4ig0BrZcgdU2bqx3VGiJiMMYNcis';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+export async function getItems() {
+    const response = await client
+        .from('shopping_list')
+        .select()
+        .order('purchased');
+    
+    return checkError(response);
+}
+
+
+export async function createItem(qty, item) {
+    const response = await client
+        .from('shopping_list')
+        .insert([
+            {
+                qty: qty,
+                item: item,
+                purchased: false
+            }
+        ]);
+    return checkError(response);
+}
+
+export async function buyItem(id) {
+    const response = await client
+        .from('shopping_list')
+        .update({ purchased: true })
+        .match({ id: id });
+    return checkError(response);
+}
+
+export async function deleteAllItems() {
+    const response = await client
+        .from('shopping_list')
+        .delete();
+    return checkError(response);
+}
+
+
+// ################################################################################################################################
+// ###
+// #
 export async function getUser() {
     return client.auth.session();
 }
-
 
 export async function checkAuth() {
     const user = await getUser();
@@ -16,7 +57,7 @@ export async function checkAuth() {
 
 export async function redirectIfLoggedIn() {
     if (await getUser()) {
-        location.replace('./other-page');
+        location.replace('./shopping-list');
     }
 }
 
@@ -41,3 +82,6 @@ export async function logout() {
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
+// #
+// ###
+// ################################################################################################################################

@@ -129,3 +129,25 @@ footer {
 .auth-container button {
     margin: 10px;
 }
+
+#item-form {
+    margin-top: 1rem;
+}
+
+#delete-button {
+    font-size: .9rem; 
+    color: black;
+    background-color: red;
+    margin-top: 2rem;
+}
+
+.purchased {
+    background-color: lightslategray;
+    text-decoration: line-through;
+    color: white;
+}
+
+.not-purchased {
+    background-color: lightseagreen;
+    color: white;
+}
