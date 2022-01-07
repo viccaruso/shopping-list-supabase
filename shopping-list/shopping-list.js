@@ -20,7 +20,7 @@ addItemButton.addEventListener('click', async(e) => {
     const data = new FormData(itemForm);
     const qty = data.get('qty');
     const item = data.get('item-name');
-
+    itemForm.reset();
     await createItem(qty, item);
 
     displayShoppingListItems();

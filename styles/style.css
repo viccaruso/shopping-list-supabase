@@ -141,3 +141,13 @@ footer {
     margin-top: 2rem;
 }
 
+.purchased {
+    background-color: lightslategray;
+    text-decoration: line-through;
+    color: white;
+}
+
+.not-purchased {
+    background-color: lightseagreen;
+    color: white;
+}
